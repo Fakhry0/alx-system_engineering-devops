@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# displays the content of the file /etc/passwd.
+
+
+
+passwd_file="/etc/passwd"
+if [[ ! -f "$passwd_file" ]]; then
+  echo "Error: File '$passwd_file' does not exist."
+  exit 1
+fi
+
+exec 3<"$passwd_file"  
+
+
+while IFS=':' read -r username uid rest; do
+
+  home_dir=${rest%%:*}
+
+
+  echo "$username:$uid:$home_dir"
+done <&3  
+
+
+exec 3>&-
+
+exit 0
+
+
