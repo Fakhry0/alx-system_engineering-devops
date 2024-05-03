@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# kills the process 7-highlander.
-# Terminal #0
+#Manages the script manage_my_process.
 
-while true 
+while true
 do
-    echo "I am a live!" >> /tmp/my_process
+    echo "I am alive!" >> /tmp/my_process
     sleep 2
 done
